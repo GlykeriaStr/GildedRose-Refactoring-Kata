@@ -1,4 +1,5 @@
-require './gilded_rose'
+require './lib/gilded_rose'
+require './lib/item'
 require 'rspec'
 
 describe GildedRose do
