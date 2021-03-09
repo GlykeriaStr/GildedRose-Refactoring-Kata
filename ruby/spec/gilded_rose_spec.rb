@@ -54,4 +54,13 @@ describe GildedRose do
     end
   end
 
+  describe '#aged_brie' do
+    it 'increases in quality the older it gets' do
+      brie = Item.new(name="Aged Brie", sell_in=2, quality=0)
+      shop = GildedRose.new(brie)
+      shop.aged_brie(brie)
+      expect(brie.quality).to eq(1)
+    end
+  end
+
 end

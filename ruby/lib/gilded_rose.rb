@@ -27,6 +27,9 @@ class GildedRose
   end
 
   def aged_brie(item)
+    quality_check(item)
+    item.sell_in -= 1
+    item.quality += 1
   end
 
   def sulfuras(item)
