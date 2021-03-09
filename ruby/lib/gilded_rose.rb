@@ -1,3 +1,5 @@
+require 'item'
+
 class GildedRose
 
   def initialize(items)
@@ -11,31 +13,33 @@ class GildedRose
     @items.each do |item|
       case item.name
       when "Aged Brie"
-        aged_brie
+        aged_brie(item)
       when "Sulfuras, Hand of Ragnaros"
-        sulfuras
+        sulfuras(item)
       when "Backstage passes to a TAFKAL80ETC concert"
-        backstage_passes
+        backstage_passes(item)
       when "Conjured Mana Cake"
-        conjured
+        conjured(item)
       else
-        regular
+        regular(item)
       end
     end
   end
 
-  def aged_brie
+  def aged_brie(item)
   end
 
-  def sulfuras
+  def sulfuras(item)
   end
 
-  def backstage_passes
+  def backstage_passes(item)
   end
 
-  def conjured
+  def conjured(item)
   end
 
-  def regular
+  def regular(item)
+    raise 'This item can no longer be sold' if item.quality < 0
   end
+
 end
