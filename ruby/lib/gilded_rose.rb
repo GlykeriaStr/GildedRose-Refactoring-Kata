@@ -40,6 +40,7 @@ class GildedRose
 
   def backstage_passes(item)
     quality_check(item)
+    return item.quality = 0 if item.sell_in < 0
     if item.sell_in <= 5
       item.quality += 3
     elsif item.sell_in <= 10
