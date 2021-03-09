@@ -79,11 +79,18 @@ describe GildedRose do
       expect(ticket.quality).to eq(21)
     end
 
-    it 'increases in quality by 2 when there are 10 days or less' do
+    it 'increase in quality by 2 when there are 10 days or less' do
       ticket = Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=10, quality=20)
       shop = GildedRose.new(ticket)
       shop.backstage_passes(ticket)
       expect(ticket.quality).to eq(22)
+    end
+
+    it 'increase in quality by 3 when there are 5 days or less' do
+      ticket = Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=5, quality=20)
+      shop = GildedRose.new(ticket)
+      shop.backstage_passes(ticket)
+      expect(ticket.quality).to eq(23)
     end
   end
 end

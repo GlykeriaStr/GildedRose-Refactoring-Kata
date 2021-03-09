@@ -40,9 +40,14 @@ class GildedRose
 
   def backstage_passes(item)
     quality_check(item)
-    increase_quality_by = item.sell_in <= 10 ? 2 : 1
+    if item.sell_in <= 5
+      item.quality += 3
+    elsif item.sell_in <= 10
+      item.quality += 2
+    else
+      item.quality += 1
+    end
     item.sell_in -= 1
-    item.quality += increase_quality_by
   end
 
   def conjured(item)
