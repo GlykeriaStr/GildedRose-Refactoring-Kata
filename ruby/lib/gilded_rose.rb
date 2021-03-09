@@ -41,6 +41,8 @@ class GildedRose
 
   def regular(item)
     raise 'This item can no longer be sold' if item.quality < 0
+    raise 'This item has too much quality' if item.quality > 50
+
     if item.sell_in < 0
       item.sell_in -= 1
       item.quality -= 2

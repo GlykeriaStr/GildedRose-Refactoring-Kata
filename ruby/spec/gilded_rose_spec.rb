@@ -20,6 +20,12 @@ describe GildedRose do
       expect{ shop.regular(vest) }.to raise_error('This item can no longer be sold')
     end
 
+    it 'raises an error if the quality is more than 50' do
+      vest = Item.new(name="Vest", sell_in=10, quality=60)
+      shop = GildedRose.new(vest)
+      expect{ shop.regular(vest) }.to raise_error('This item has too much quality')
+    end
+
     it 'decreases in days and quality every day by 1' do
       vest = Item.new(name="Vest", sell_in=10, quality=2)
       shop = GildedRose.new(vest)
