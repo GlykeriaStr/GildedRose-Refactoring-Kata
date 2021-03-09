@@ -27,6 +27,14 @@ describe GildedRose do
       expect(vest.sell_in).to eq(9)
       expect(vest.quality).to eq(1)
     end
+
+    it 'decreases quality twice as fast when sell by date has passed' do
+      vest = Item.new(name="Vest", sell_in=-1, quality=10)
+      shop = GildedRose.new(vest)
+      shop.regular(vest)
+      expect(vest.sell_in).to eq(-2)
+      expect(vest.quality).to eq(8)
+    end
   end
 
 end
