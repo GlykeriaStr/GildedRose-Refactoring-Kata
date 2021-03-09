@@ -37,6 +37,9 @@ class GildedRose
   end
 
   def conjured(item)
+    quality_check(item)
+    item.sell_in -= 1
+    item.quality -= 2
   end
 
   def regular(item)

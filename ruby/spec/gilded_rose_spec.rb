@@ -14,18 +14,6 @@ describe GildedRose do
   # end
 
   describe '#regular' do
-    it 'raises an error if the quality is less than  0' do
-      vest = Item.new(name="Vest", sell_in=10, quality=-2)
-      shop = GildedRose.new(vest)
-      expect{ shop.regular(vest) }.to raise_error('This item can no longer be sold')
-    end
-
-    it 'raises an error if the quality is more than 50' do
-      vest = Item.new(name="Vest", sell_in=10, quality=60)
-      shop = GildedRose.new(vest)
-      expect{ shop.regular(vest) }.to raise_error('This item has too much quality')
-    end
-
     it 'decreases in days and quality every day by 1' do
       vest = Item.new(name="Vest", sell_in=10, quality=2)
       shop = GildedRose.new(vest)
@@ -40,6 +28,29 @@ describe GildedRose do
       shop.regular(vest)
       expect(vest.sell_in).to eq(-2)
       expect(vest.quality).to eq(8)
+    end
+  end
+
+  describe '#quality_check' do
+    it 'raises an error if the quality is more than 50' do
+      vest = Item.new(name="Vest", sell_in=10, quality=60)
+      shop = GildedRose.new(vest)
+      expect{ shop.quality_check(vest) }.to raise_error('This item has too much quality')
+    end
+
+    it 'raises an error if the quality is less than  0' do
+      vest = Item.new(name="Vest", sell_in=10, quality=-2)
+      shop = GildedRose.new(vest)
+      expect{ shop.quality_check(vest) }.to raise_error('This item can no longer be sold')
+    end
+  end
+
+  describe '#conjured' do
+    it 'decreases in quality twice as fast as regular items' do
+      cake = Item.new(name="Conjured Mana Cake", sell_in=3, quality=6)
+      shop = GildedRose.new(cake)
+      shop.conjured(cake)
+      expect(cake.quality).to eq(4)
     end
   end
 
