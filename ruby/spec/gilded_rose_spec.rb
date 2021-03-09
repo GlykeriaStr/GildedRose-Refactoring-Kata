@@ -5,13 +5,13 @@ require 'rspec'
 describe GildedRose do
   let(:regular) { double(Item, name: 'bread', sell_in: 10, quality: 20)}
 
-  # describe "#update_quality" do
-  #   it "does not change the name" do
-  #     items = [Item.new("foo", 0, 0)]
-  #     GildedRose.new(items).update_quality()
-  #     expect(items[0].name).to eq "foo"
-  #   end
-  # end
+  describe "#update_quality" do
+    it "does not change the name" do
+      items = [Item.new("foo", 0, 0)]
+      GildedRose.new(items).update_quality()
+      expect(items[0].name).to eq "foo"
+    end
+  end
 
   describe '#regular' do
     it 'decreases in days and quality every day by 1' do
@@ -71,4 +71,12 @@ describe GildedRose do
     end
   end
 
+  describe '#backstage_passes' do
+    it 'increases in quality when sell by date is approaching' do
+      ticket = Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=15, quality=20)
+      shop = GildedRose.new(ticket)
+      shop.backstage_passes(ticket)
+      expect(ticket.quality).to eq(21)
+    end
+  end
 end

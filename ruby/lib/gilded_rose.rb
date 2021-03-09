@@ -7,6 +7,7 @@ class GildedRose
   end
 
   def update_quality()
+    name_case
   end
 
   def name_case
@@ -38,6 +39,9 @@ class GildedRose
   end
 
   def backstage_passes(item)
+    quality_check(item)
+    item.sell_in -= 1
+    item.quality += 1
   end
 
   def conjured(item)
