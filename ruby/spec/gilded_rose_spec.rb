@@ -93,7 +93,7 @@ describe GildedRose do
       expect(ticket.quality).to eq(23)
     end
 
-    it 'drops quality to 0 after the concert' do
+    it 'drop quality to 0 after the concert' do
       ticket = Item.new(name="Backstage passes to a TAFKAL80ETC concert", sell_in=-1, quality=20)
       shop = GildedRose.new(ticket)
       shop.backstage_passes(ticket)
