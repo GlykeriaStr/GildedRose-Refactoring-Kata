@@ -3,7 +3,7 @@ require './lib/item'
 require 'rspec'
 
 describe GildedRose do
-  # let(:regular) { double(Item, name: 'bread', sell_in: 10, quality: 20)}
+  let(:regular) { double(Item, name: 'bread', sell_in: 10, quality: 20)}
 
   # describe "#update_quality" do
   #   it "does not change the name" do
@@ -18,6 +18,14 @@ describe GildedRose do
       vest = Item.new(name="Vest", sell_in=10, quality=-2)
       shop = GildedRose.new(vest)
       expect{ shop.regular(vest) }.to raise_error('This item can no longer be sold')
+    end
+
+    it 'decreases in days and quality every day by 1' do
+      vest = Item.new(name="Vest", sell_in=10, quality=2)
+      shop = GildedRose.new(vest)
+      shop.regular(vest)
+      expect(vest.sell_in).to eq(9)
+      expect(vest.quality).to eq(1)
     end
   end
 
