@@ -56,18 +56,18 @@ describe GildedRose do
 
   describe '#aged_brie' do
     before(:each) do
-      brie = Item.new(name="Aged Brie", sell_in=0, quality=0)
-      shop = GildedRose.new(brie)
-      shop.aged_brie(brie)
+      @brie = Item.new(name="Aged Brie", sell_in=0, quality=0)
+      @shop = GildedRose.new(@brie)
+      @shop.aged_brie(@brie)
     end
 
     it 'increases in quality the older it gets' do
-      expect(brie.quality).to eq(1)
+      expect(@brie.quality).to eq(1)
     end
 
     it 'increases by 2 when sell by date has passed' do
-      shop.aged_brie(brie)
-      expect(brie.quality).to eq(3)
+      @shop.aged_brie(@brie)
+      expect(@brie.quality).to eq(3)
     end
   end
 
