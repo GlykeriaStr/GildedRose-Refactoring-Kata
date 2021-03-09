@@ -40,9 +40,7 @@ class GildedRose
   end
 
   def regular(item)
-    raise 'This item can no longer be sold' if item.quality < 0
-    raise 'This item has too much quality' if item.quality > 50
-
+    quality_check(item)
     if item.sell_in < 0
       item.sell_in -= 1
       item.quality -= 2
@@ -52,4 +50,8 @@ class GildedRose
     end
   end
 
+  def quality_check(item)
+    raise 'This item can no longer be sold' if item.quality < 0
+    raise 'This item has too much quality' if item.quality > 50
+  end
 end
