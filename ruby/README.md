@@ -2,6 +2,13 @@
 
 This test is for practicing OO design, TDD skills, refactoring as well as producing a clean code.
 
+## Testing
+
+To test this app:
+* Clone this repo
+* Bundle install
+* Run rspec
+
 ## Planning
 
 * My first move was to write down all the specifications about each item that needed attention as well as the overall requirements.
