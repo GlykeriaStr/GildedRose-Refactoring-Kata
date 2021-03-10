@@ -4,10 +4,11 @@ This test is for practicing OO design, TDD skills, refactoring as well as produc
 
 ## Planning
 
-* As I knew that I couldn't change the Item class, my first move was to remove it from the file and have it on a separate one.
-* I wrote down all the specifications about each item that needed attention as well as the overall requirements.
+* My first move was to write down all the specifications about each item that needed attention as well as the overall requirements.
 
   ![planning](screenshots/planning.png)
+
+* As I knew that I couldn't change the Item class, I removed it from the file and put it on a separate one.
 
 * After making sure I understood the requirements, I started my TDD process making sure I test everything and break down the class into small methods.
 
