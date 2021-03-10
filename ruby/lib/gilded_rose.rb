@@ -28,7 +28,7 @@ class GildedRose
 
   def aged_brie(item)
     quality_check(item)
-    increase_quality_by = item.sell_in.negative? ? 2 : 1
+    increase_quality_by = sell_by_date_passed?(item) ? 2 : 1
     item.sell_in -= 1
     item.quality += increase_quality_by
   end
@@ -40,7 +40,7 @@ class GildedRose
   def backstage_passes(item)
     quality_check(item)
 
-    return item.quality = 0 if item.sell_in.negative?
+    return item.quality = 0 if sell_by_date_passed?(item)
 
     concert_days(item)
   end
@@ -53,7 +53,7 @@ class GildedRose
 
   def regular(item)
     quality_check(item)
-    decrease_quality_by = item.sell_in.negative? ? 2 : 1
+    decrease_quality_by = sell_by_date_passed?(item) ? 2 : 1
     item.sell_in -= 1
     item.quality -= decrease_quality_by
   end
@@ -72,5 +72,9 @@ class GildedRose
                       1
                     end
     item.sell_in -= 1
+  end
+
+  def sell_by_date_passed?(item)
+    item.sell_in.negative?
   end
 end

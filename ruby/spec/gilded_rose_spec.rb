@@ -30,7 +30,7 @@ describe GildedRose do
       expect(@items[0].quality).to eq(19)
     end
 
-    it 'aged brie increases in quality the older it gets' do
+    it 'increases the quality of aged brie the older it gets' do
       expect(@items[1].quality).to eq(1)
     end
 
@@ -41,17 +41,17 @@ describe GildedRose do
       expect(@items[3].quality).to eq(80)
     end
 
-    it 'increases the quality of backstage_passes when sell by date is approaching' do
+    it 'increases the quality of backstage_passes by 1 when sell by date is approaching' do
       expect(@items[4].sell_in).to eq(14)
       expect(@items[4].quality).to eq(21)
     end
 
-    it 'increase the quality of backstage_passes by 2 when there are 10 days or less' do
+    it 'increase the quality of backstage_passes by 2 when there are 10 days or less left' do
       expect(@items[5].sell_in).to eq(9)
       expect(@items[5].quality).to eq(47)
     end
 
-    it 'increase the quality of backstage_passes by 3 when there are 10 days or less' do
+    it 'increase the quality of backstage_passes by 3 when there are 10 days or less left' do
       expect(@items[6].sell_in).to eq(4)
       expect { @shop.update_quality }.to raise_error('This item has too much quality')
     end
