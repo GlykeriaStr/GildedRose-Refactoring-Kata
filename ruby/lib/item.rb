@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Item
   attr_accessor :name, :sell_in, :quality
 
@@ -7,7 +9,7 @@ class Item
     @quality = quality
   end
 
-  def to_s()
+  def to_s
     "#{@name}, #{@sell_in}, #{@quality}"
   end
 end
